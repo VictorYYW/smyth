@@ -91,6 +91,7 @@ type command =
   | SuiteTest
   | Fuzz
   | PolyFuzz
+  | JsonFuzz
   | AssertionExport
   | GenerateSpec
   | GeneratePolySpec
@@ -105,6 +106,7 @@ let commands : command list =
     ; SuiteTest
     ; Fuzz
     ; PolyFuzz
+    ; JsonFuzz
     ; AssertionExport
     ; GenerateSpec
     ; GeneratePolySpec
@@ -117,6 +119,7 @@ let command_name : command -> string =
     | SuiteTest -> "suite-test"
     | Fuzz -> "fuzz"
     | PolyFuzz -> "poly-fuzz"
+    | JsonFuzz -> "json-fuzz"
     | AssertionExport -> "export-assertions"
     | GenerateSpec -> "generate-spec"
     | GeneratePolySpec -> "generate-poly-spec"
@@ -147,6 +150,9 @@ let command_description : command -> string =
     | PolyFuzz ->
         "Stress-test a polymorphic program sketch with examples fuzzed from a "
           ^ "built-in function"
+
+    | JsonFuzz ->
+        "Use json file as a source for IO examples and perform stress-test"
 
     | AssertionExport ->
         "Export a set of assertions to Python code"
@@ -187,6 +193,24 @@ let command_arguments : command -> (string * string) list =
     | PolyFuzz ->
         [ ( "trial-count"
           , "The number of trials to run for each size of example set"
+          )
+        ; ( "built-in-func"
+          , "The built-in function to use as a reference"
+          )
+        ; ( "specification"
+          , "The path to the specification"
+          )
+        ; ( "sketch"
+          , "The path to the sketch to be fuzzed WITHOUT any examples"
+          )
+        ]
+
+    | JsonFuzz ->
+        [ ( "trial-count"
+          , "The number of trials to run for each size of example set"
+          )
+        ; ( "max_k"
+          , "max number of examples in a set"
           )
         ; ( "built-in-func"
           , "The built-in function to use as a reference"
@@ -868,7 +892,128 @@ let () =
                     )
             in
             print_endline result_string
+        | JsonFuzz -> 
+            let trial_count =
+              match int_of_string_opt Sys.argv.(2) with
+                | Some n when n > 0 ->
+                    n
 
+                | _ ->
+                    prerr_endline "Trial count must be a positive integer.\n";
+                    prerr_endline (command_help command);
+                    exit 1
+            in
+            let max_k =
+              match int_of_string_opt Sys.argv.(3) with
+                | Some n when n > 0 ->
+                    n
+
+                | _ ->
+                    prerr_endline "Trial count must be a positive integer.\n";
+                    prerr_endline (command_help command);
+                    exit 1
+            in
+            let builtin =
+              Sys.argv.(4)
+            in
+            let spec_path =
+              Sys.argv.(5)
+            in
+            let sketch_path =
+              Sys.argv.(6)
+            in
+            let benchmark : (Lang.exp * Lang.exp) list list list =
+              match
+                List.assoc_opt
+                  builtin
+                  (References.all (Fuzz.parse_random_proj ~n:trial_count ~max_k ~name:builtin))
+              with
+                | Some benchmark_thunk ->
+                    benchmark_thunk ()
+
+                | None ->
+                    prerr_endline
+                      ( "Unknown built-in function '" ^ builtin ^ "'."
+                      );
+                    exit 1
+            in
+            let results : (int * int * float * int) list =
+              List.map
+                ( fun trials ->
+                    let (top_successes, top_recursive_successes, times) =
+                      trials
+                        |> List.map
+                             ( fun assertions ->
+                                 let open Endpoint in
+                                 match
+                                   Endpoint.test_assertions
+                                     ~specification:(Io2.read_path [spec_path])
+                                     ~sketch:(Io2.read_path [sketch_path])
+                                     ~assertions
+                                 with
+                                   | Ok
+                                       { top_success
+                                       ; top_recursive_success
+                                       ; time_taken
+                                       ; _
+                                       } ->
+                                         (top_success, top_recursive_success, Some time_taken)
+
+                                   | Error Endpoint.TimedOut _
+                                   | Error Endpoint.NoSolutions ->
+                                       (false, false, None)
+
+                                   | Error e ->
+                                       prerr_endline
+                                         ( "error for '"
+                                             ^ sketch_path
+                                             ^ "': "
+                                             ^ Show.error e
+                                         );
+                                       exit 1
+                             )
+                        |> List2.unzip3
+                    in
+                    ( List2.count identity top_successes
+                    , List2.count identity top_recursive_successes
+                    , times |> List2.filter_somes |> List2.average |> Option.get
+                    , List2.count (Option.is_none) times
+                    )
+                )
+              benchmark
+            in
+            let result_string =
+              builtin
+                ^ "\ntimeout,"
+                ^ Float2.to_string !Params.max_total_time
+                ^ "\ntrial count,"
+                ^ string_of_int trial_count
+                ^ "\n"
+                ^ "example count,top success percent,"
+                ^ "top recursive success percent,"
+                ^ "average time,timeout"
+                ^ "\n"
+                ^ String.concat "\n"
+                    ( List.mapi
+                        ( fun k (top_successes, top_recursive_successes, average_time, timeout_count) ->
+                            ( Printf.sprintf "%d,%.4f,%.4f,%.4f,%d"
+                                (k+1)
+                                ( ratio
+                                    top_successes
+                                    trial_count
+                                )
+                                ( ratio
+                                    top_recursive_successes
+                                    trial_count
+                                )
+                                average_time
+                                timeout_count
+                            )
+                        )
+                        results
+                    )
+            in
+            print_endline result_string
         | AssertionExport ->
             begin match
               Endpoint.assertion_info

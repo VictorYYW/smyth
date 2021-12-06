@@ -7,7 +7,7 @@
       stdlib2 smyth
 
       ; opam libraries
-      bark js_of_ocaml
+      bark js_of_ocaml yojson
   )
   ( flags
       ; (-open Pervasives2)

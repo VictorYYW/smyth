@@ -30,3 +30,4 @@ val take : int -> 'a list -> 'a list
 val drop : int -> 'a list -> 'a list
 val cartesian_product : 'a list -> 'b list -> ('a * 'b) list
 val count : ('a -> bool) -> 'a list -> int
+val unzip3 : (('a * 'b * 'c) list) -> 'a list * 'b list * 'c list

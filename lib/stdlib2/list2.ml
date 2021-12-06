@@ -210,3 +210,10 @@ let count pred xs =
           helper (if pred head then acc + 1 else acc) tail
   in
   helper 0 xs
+
+let rec unzip3 (xs:('a * 'b * 'c) list) : 'a list * 'b list * 'c list =
+  match xs with
+  | [] -> ([],[],[])
+  | (x,y,z)::tail -> 
+      let (xs,ys,zs) = unzip3 tail in
+      (x::xs, y::ys, z::zs)

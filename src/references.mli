@@ -3,6 +3,7 @@ type ('i, 'o) reference =
   ; k_max : int
   ; d_in : 'i Denotation.t
   ; d_out : 'o Denotation.t
+  ; p_in : 'i Json.parse_t
   ; input : 'i Sample2.gen
   ; base_case : 'i Sample2.gen option
   ; poly_args : Smyth.Lang.typ list

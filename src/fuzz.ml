@@ -137,3 +137,57 @@ let specification_proj : poly:bool -> string reference_projection =
                 failwith
                   "Sample2.io_trial didn't return singleton in specification_proj"
     }
+
+let parse_random_proj :
+    n:int ->
+    max_k:int ->
+    name:string -> 
+    (unit ->
+    (Lang.exp * Lang.exp) list list list)
+    reference_projection =
+ fun ~n ~max_k ~name ->
+  let runner = Denotation.mono in
+  {
+    proj =
+      (fun {
+             function_name;
+             (* k_max; *)
+             d_in;
+             d_out;
+             p_in;
+             (* input; *)
+             func;
+           } () ->
+        let json =
+          Yojson.Basic.from_file ("/home/slark/sis-lambda/example_gen/" ^ name ^ ".json")
+        in
+          List.map
+            (fun k ->
+              let module Json =  Yojson.Basic in
+              (* k is size of example set *)
+              json |> Json.Util.member (Int.to_string k) |> Json.Util.to_list |> fun l ->
+              List2.take n l
+              |> List.map (fun set ->
+                     set |> Json.Util.to_list
+                     |> List.map (fun io ->
+                            match Json.Util.to_list io with
+                            | [ i; _o ] ->
+                                let input_val = p_in i in
+                                let output_val = func input_val in
+                            let args =
+                              match runner d_in input_val with
+                                | Lang.ECtor ("args", [], Lang.ETuple args) ->
+                                    args
+
+                                | arg ->
+                                    [arg]
+                            in
+                            ( Desugar.app
+                                (Lang.EVar function_name)
+                                (List.map (fun e -> Lang.EAExp e) args)
+                            , runner d_out output_val
+                            )
+                            | _        -> failwith "json not well-formated")))
+            (List2.range ~low:1 ~high:max_k)
+          );
+  }
