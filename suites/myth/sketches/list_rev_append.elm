@@ -14,6 +14,6 @@ append l1 l2 =
     Cons p ->
       Cons (#2.1 p, append (#2.2 p) l2)
 
-listRevAppend : NatList -> NatList
-listRevAppend xs =
+list_rev_append : NatList -> NatList
+list_rev_append xs =
   ??

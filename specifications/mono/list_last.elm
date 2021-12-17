@@ -1,4 +1,4 @@
-specifyFunction listLast
+specifyFunction list_last
   [ ([], None)
   , ([1, 3], Some 3)
   , ([3, 2, 3], Some 3)

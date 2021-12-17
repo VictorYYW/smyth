@@ -18,6 +18,6 @@ append l1 l2 =
     Cons p ->
       Cons (#2.1 p, append (#2.2 p) l2)
 
-concat : NatListList -> NatList
-concat xss =
+list_concat : NatListList -> NatList
+list_concat xss =
   ??

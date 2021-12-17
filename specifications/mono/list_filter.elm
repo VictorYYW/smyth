@@ -1,4 +1,4 @@
-specifyFunction2 listFilter
+specifyFunction2 list_filter
   [ (isEven, [], [])
   , (isEven, [1, 2, 0], [2, 0])
   , (isNonzero, [3], [3])

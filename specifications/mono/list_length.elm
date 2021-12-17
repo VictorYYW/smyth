@@ -1,4 +1,4 @@
-specifyFunction listLength
+specifyFunction list_length
   [ ([], 0)
   , ([0, 3, 1, 0], 4)
   , ([3, 3, 2, 3], 4)

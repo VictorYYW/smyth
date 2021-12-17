@@ -12,6 +12,6 @@ map xs f =
     Nil _ -> Nil ()
     Cons p -> Cons (f (#2.1 p), map (#2.2 p) f)
 
-listInc : NatList -> NatList
-listInc xs =
+list_inc : NatList -> NatList
+list_inc xs =
   ??

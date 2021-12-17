@@ -1,4 +1,4 @@
-specifyFunction2 listNth
+specifyFunction2 list_nth
   [ ([], 0, 0)
   , ([2], 0, 2)
   , ([3, 1, 2], 1, 1)

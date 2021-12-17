@@ -1,4 +1,4 @@
-specifyFunction listSum
+specifyFunction list_sum
   [ ([], 0)
   , ([0, 0, 3, 3], 6)
   , ([3, 1], 4)

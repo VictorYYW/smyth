@@ -10,6 +10,6 @@ type NatOpt
   = None ()
   | Some Nat
 
-listLast : NatList -> NatOpt
-listLast xs =
+list_last : NatList -> NatOpt
+list_last xs =
   ??

@@ -1,4 +1,4 @@
-specifyFunction evenParity
+specifyFunction list_even_parity
   [ ([], T)
   , ([F, T], F)
   , ([F], T)

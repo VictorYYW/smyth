@@ -10,11 +10,11 @@ type NatList
   = Nil ()
   | Cons (Nat, NatList)
 
-sum : Nat -> Nat -> Nat
-sum n1 n2 =
+add : Nat -> Nat -> Nat
+add n1 n2 =
   case n1 of
     Z _ -> n2
-    S m -> S (sum m n2)
+    S m -> S (add m n2)
 
 isOdd : Nat -> Boolean
 isOdd n =
@@ -31,8 +31,8 @@ countOdd n1 n2 =
     T _ -> S n1
     F _ -> n1
 
-listFold : (Nat -> Nat -> Nat) -> Nat -> NatList -> Nat
-listFold f acc =
+list_fold : (Nat -> Nat -> Nat) -> Nat -> NatList -> Nat
+list_fold f acc =
   let
     fixListFold : NatList -> Nat
     fixListFold xs =

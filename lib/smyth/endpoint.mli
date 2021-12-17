@@ -36,6 +36,8 @@ val solve : sketch:string -> solve_result response
 (** [solve sketch] tries to return a {!solve_result} that satisfies the
     assertions in [sketch]. *)
 
+val solve_exs : sketch:string -> exs:(Lang.exp * Lang.exp) list -> solve_result response
+
 (** {1:test Test} *)
 
 type test_result =

@@ -1,4 +1,4 @@
-specifyFunction2 listMap
+specifyFunction2 list_map
   [ (inc, [], [])
   , (zero, [], [])
   , (zero, [0, 2, 2, 0], [0, 0, 0, 0])

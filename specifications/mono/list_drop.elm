@@ -1,4 +1,4 @@
-specifyFunction2 listDrop
+specifyFunction2 list_drop
   [ ([], 0, [])
   , ([0, 0], 0, [0, 0])
   , ([3, 2, 1], 0, [3, 2, 1])

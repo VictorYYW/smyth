@@ -1,4 +1,4 @@
-specifyFunction2 listTake
+specifyFunction2 list_take
   [ (0, [], [])
   , (1, [], [])
   , (3, [], [])

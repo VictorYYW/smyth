@@ -12,8 +12,8 @@ zero n = Z ()
 inc : Nat -> Nat
 inc n = S n
 
-listMap : (Nat -> Nat) -> NatList -> NatList
-listMap f =
+list_map : (Nat -> Nat) -> NatList -> NatList
+list_map f =
   let
     listMapFix : NatList -> NatList
     listMapFix xs =

@@ -117,6 +117,12 @@ let solve ~sketch =
     |> parse_program
     |> Result2.and_then solve_program
 
+let solve_exs ~sketch ~exs =
+  sketch
+    |> parse_program
+    |> Result.map (fun prog -> {prog with Desugar.assertions=exs})
+    |> Result2.and_then solve_program
+
 (* Test *)
 
 type test_result =

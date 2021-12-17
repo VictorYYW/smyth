@@ -6,6 +6,6 @@ type BooleanList
   = Nil ()
   | Cons (Boolean, BooleanList)
 
-evenParity : BooleanList -> Boolean
-evenParity xs =
+list_even_parity : BooleanList -> Boolean
+list_even_parity xs =
   ??

@@ -25,8 +25,8 @@ isNonzero n =
     Z _ -> F ()
     S _ -> T ()
 
-listFilter : (Nat -> Boolean) -> NatList -> NatList
-listFilter predicate =
+list_filter : (Nat -> Boolean) -> NatList -> NatList
+list_filter predicate =
   let
     fixListFilter : NatList -> NatList
     fixListFilter xs =

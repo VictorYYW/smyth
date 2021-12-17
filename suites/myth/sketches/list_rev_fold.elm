@@ -23,6 +23,6 @@ snoc xs n =
     Nil _ -> Cons (n, Nil ())
     Cons p -> Cons (#2.1 p, snoc (#2.2 p) n)
 
-listRevFold : NatList -> NatList
-listRevFold xs =
+list_rev_fold : NatList -> NatList
+list_rev_fold xs =
   ??

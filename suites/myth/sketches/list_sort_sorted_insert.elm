@@ -33,6 +33,6 @@ insert xs n =
         EQ _ -> xs
         GT _ -> Cons (#2.1 p, insert (#2.2 p) n)
 
-listSortSortedInsert : NatList -> NatList
-listSortSortedInsert xs =
+list_sort_sorted_insert : NatList -> NatList
+list_sort_sorted_insert xs =
   ??

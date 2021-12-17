@@ -6,6 +6,6 @@ type NatList
   = Nil ()
   | Cons (Nat, NatList)
 
-listSnoc : NatList -> Nat -> NatList
-listSnoc xs n =
+list_snoc : NatList -> Nat -> NatList
+list_snoc xs n =
   ??

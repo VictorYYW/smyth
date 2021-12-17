@@ -6,6 +6,6 @@ type NatList
   = Nil ()
   | Cons (Nat, NatList)
 
-listRevTailcall : NatList -> NatList -> NatList
-listRevTailcall xs acc =
+list_rev_tailcall : NatList -> NatList -> NatList
+list_rev_tailcall xs acc =
   ??

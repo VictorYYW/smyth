@@ -23,6 +23,6 @@ compare n1 n2 =
         Z _  -> GT ()
         S m2 -> compare m1 m2
 
-compress : NatList -> NatList
-compress xs =
+list_compress : NatList -> NatList
+list_compress xs =
   ??

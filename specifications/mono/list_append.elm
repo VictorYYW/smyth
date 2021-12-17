@@ -1,4 +1,4 @@
-specifyFunction2 append
+specifyFunction2 list_append
   [ ([], [], [])
   , ([3, 0, 1, 2], [0], [3, 0, 1, 2, 0])
   , ([1, 2], [3, 2, 1], [1, 2, 3, 2, 1])

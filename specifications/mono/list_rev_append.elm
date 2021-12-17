@@ -1,4 +1,4 @@
-specifyFunction listRevAppend
+specifyFunction list_rev_append
   [ ([], [])
   , ([3], [3])
   , ([2, 3], [3, 2])

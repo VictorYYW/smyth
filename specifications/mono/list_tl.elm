@@ -1,4 +1,4 @@
-specifyFunction listTail
+specifyFunction list_tl
   [ ([], [])
   , ([2], [])
   , ([0, 3], [3])

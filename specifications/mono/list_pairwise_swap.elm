@@ -1,4 +1,4 @@
-specifyFunction listPairwiseSwap
+specifyFunction list_pairwise_swap
   [ ([], [])
   , ([0], [])
   , ([2, 0], [0, 2])

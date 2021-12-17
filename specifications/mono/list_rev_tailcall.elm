@@ -1,4 +1,4 @@
-specifyFunction2 listRevTailcall
+specifyFunction2 list_rev_tailcall
   [ ([], [], [])
   , ([1, 1, 2], [], [2, 1, 1])
   , ([2, 2, 2, 2], [1, 3, 1], [2, 2, 2, 2, 1, 3, 1])

@@ -6,6 +6,6 @@ type NatList
   = Nil ()
   | Cons (Nat, NatList)
 
-listPairwiseSwap : NatList -> NatList
-listPairwiseSwap xs =
+list_pairwise_swap : NatList -> NatList
+list_pairwise_swap xs =
   ??

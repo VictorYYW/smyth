@@ -1,4 +1,4 @@
-specifyFunction2 listSnoc
+specifyFunction2 list_snoc
   [ ([], 0, [0])
   , ([], 3, [3])
   , ([], 1, [1])

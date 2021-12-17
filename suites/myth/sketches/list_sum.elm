@@ -23,6 +23,6 @@ add n1 n2 =
     Z _ -> n2
     S m -> S (add m n2)
 
-listSum : NatList -> Nat
-listSum xs =
+list_sum : NatList -> Nat
+list_sum xs =
   ??

@@ -23,6 +23,6 @@ compare n1 n2 =
         Z _  -> GT ()
         S m2 -> compare m1 m2
 
-listSortedInsert : NatList -> Nat -> NatList
-listSortedInsert xs n =
+list_sorted_insert : NatList -> Nat -> NatList
+list_sorted_insert xs n =
   ??

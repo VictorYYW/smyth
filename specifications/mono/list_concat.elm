@@ -1,4 +1,4 @@
-specifyFunction concat
+specifyFunction list_concat
   [ (LNil, [])
   , (LCons ([0, 1], LCons ([3, 2], LCons ([3], LCons ([0], LNil)))), [0, 1, 3, 2, 3, 0])
   , (LCons ([2], LCons ([3], LCons ([1, 1], LNil))), [2, 3, 1, 1])

@@ -1,4 +1,4 @@
-specifyFunction2 listSortedInsert
+specifyFunction2 list_sorted_insert
   [ ([], 0, [0])
   , ([2], 0, [0, 2])
   , ([2, 0], 3, [2, 0, 3])
