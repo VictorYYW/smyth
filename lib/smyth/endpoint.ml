@@ -149,6 +149,7 @@ let check :
         exp_with_holes
         hole_filling
     in
+    Printf.printf "%s\n" (Pretty.exp exp);
     match Type.check sigma Type_ctx.empty exp (Lang.TTuple []) with
       | Error e ->
           Error (TypeError e)
