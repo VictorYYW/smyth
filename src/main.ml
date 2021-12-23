@@ -738,6 +738,7 @@ let () =
                         ,o
                         )
             in
+            try 
             match
               Endpoint.test_assertions
                 ~specification:(Io2.read_file ("suites/no-sketch/specifications/"^builtin^".elm"))
@@ -752,6 +753,9 @@ let () =
               test_result
               |> Show.test_result
               |> print_endline
+            with
+            | Stack_overflow -> prerr_endline "STACKOVERFLOW";
+              exit 1
           end
 
         | Test ->
