@@ -730,29 +730,30 @@ let () =
                       |> List.map (fun (i, o) ->
                           (match i with
                            | Lang.ETuple es -> List.map (fun e ->
-                               
+
                                Lang.EAExp e) es |> Desugar.app (Lang.EVar builtin) 
                            | _ -> Desugar.app (Lang.EVar builtin) [if String.equal builtin "list_concat" then
-                                 Lang.EAExp (concat_L_input i)
-                                   else Lang.EAExp i])
+                                                                     Lang.EAExp (concat_L_input i)
+                                                                   else Lang.EAExp i])
                         ,o
                         )
             in
+            Params.max_total_time := 1200.0;
             try 
-            match
-              Endpoint.test_assertions
-                ~specification:(Io2.read_file ("suites/no-sketch/specifications/"^builtin^".elm"))
-                ~sketch:(Io2.read_file ("suites/no-sketch/sketches/"^builtin^".elm"))
-                ~assertions:exs
-            with
-            | Error e ->
-              prerr_endline (Show.error e);
-              exit 1
+              match
+                Endpoint.test_assertions
+                  ~specification:(Io2.read_file ("suites/no-sketch/specifications/"^builtin^".elm"))
+                  ~sketch:(Io2.read_file ("suites/no-sketch/sketches/"^builtin^".elm"))
+                  ~assertions:exs
+              with
+              | Error e ->
+                prerr_endline (Show.error e);
+                exit 1
 
-            | Ok test_result ->
-              test_result
-              |> Show.test_result
-              |> print_endline
+              | Ok test_result ->
+                test_result
+                |> Show.test_result
+                |> print_endline
             with
             | Stack_overflow -> prerr_endline "STACKOVERFLOW";
               exit 1
