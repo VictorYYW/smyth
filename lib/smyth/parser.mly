@@ -98,6 +98,10 @@ exp:
     {
       mk_ctor_by_name c (ETuple [])
     }
+  | c=UID LPAREN RPAREN
+    {
+      mk_ctor_by_name c (ETuple [])
+    }
   | c=UID e=exp
                      { mk_ctor_by_name c e }
   | c=UID LPAREN e=exp RPAREN

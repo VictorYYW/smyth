@@ -1,4 +1,4 @@
-specifyFunction2 treeMap
+specifyFunction2 tree_map
   [ (div2, Leaf, Leaf)
   , (div2, Node (Node (Leaf, 3, Node (Node (Leaf, 1, Leaf), 2, Leaf)), 0, Leaf), Node (Node (Leaf, 1, Node (Node (Leaf, 0, Leaf), 1, Leaf)), 0, Leaf))
   , (div2, Node (Node (Leaf, 1, Node (Leaf, 0, Leaf)), 1, Leaf), Node (Node (Leaf, 0, Node (Leaf, 0, Leaf)), 0, Leaf))

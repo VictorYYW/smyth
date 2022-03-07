@@ -1,4 +1,4 @@
-specifyFunction treeInOrder
+specifyFunction tree_inorder
   [ (Leaf, [])
   , (Node (Node (Node (Leaf, 3, Node (Leaf, 2, Leaf)), 1, Leaf), 2, Leaf), [3, 2, 1, 2])
   , (Node (Node (Leaf, 1, Node (Leaf, 0, Node (Leaf, 1, Leaf))), 1, Leaf), [1, 0, 1, 1])

@@ -2,6 +2,6 @@ type Boolean
   = F ()
   | T ()
 
-or : Boolean -> Boolean -> Boolean
-or p q =
+bool_bor : Boolean -> Boolean -> Boolean
+bool_bor p q =
   ??

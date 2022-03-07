@@ -16,6 +16,6 @@ sum n1 n2 =
     Z _ -> n2
     S m -> S (sum m n2)
 
-treeCountLeaves : BooleanTree -> Nat
-treeCountLeaves tree =
+tree_count_leaves : BooleanTree -> Nat
+tree_count_leaves tree =
   ??

@@ -1,4 +1,4 @@
-specifyFunction treeCollectLeaves
+specifyFunction tree_collect_leaves
   [ (Leaf, [])
   , (Node (Leaf, F, Node (Node (Leaf, T, Node (Node (Leaf, F, Node (Leaf, T, Leaf)), T, Leaf)), F, Leaf)), [F, T, F, T, T, F])
   , (Node (Leaf, T, Node (Node (Leaf, T, Leaf), F, Leaf)), [T, T, F])

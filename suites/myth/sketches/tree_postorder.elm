@@ -18,6 +18,6 @@ append l1 l2 =
     Cons p ->
       Cons (#2.1 p, append (#2.2 p) l2)
 
-treePostorder : NatTree -> NatList
-treePostorder tree =
+tree_postorder : NatTree -> NatList
+tree_postorder tree =
   ??

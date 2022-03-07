@@ -1,4 +1,4 @@
-specifyFunction2 xor
+specifyFunction2 bool_xor
   [ (T, F, T)
   , (T, T, F)
   , (F, T, T)

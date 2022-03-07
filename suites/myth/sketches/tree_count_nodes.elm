@@ -12,6 +12,6 @@ sum n1 n2 =
     Z _ -> n2
     S m -> S (sum m n2)
 
-treeCountNodes : NatTree -> Nat
-treeCountNodes tree =
+tree_count_nodes : NatTree -> Nat
+tree_count_nodes tree =
   ??

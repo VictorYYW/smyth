@@ -1,4 +1,4 @@
-specifyFunction2 treeBInsert
+specifyFunction2 tree_binsert
   [ (0, Leaf, Node (Leaf, 0, Leaf))
   , (2, Node (Node (Leaf, 0, Node (Leaf, 0, Leaf)), 0, Leaf), Node (Node (Leaf, 0, Node (Leaf, 0, Leaf)), 0, Node (Leaf, 2, Leaf)))
   , (1, Node (Node (Leaf, 0, Leaf), 1, Leaf), Node (Node (Leaf, 0, Leaf), 1, Leaf))

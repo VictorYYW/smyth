@@ -59,7 +59,6 @@ type ('i, 'o) reference =
   ; k_max : int
   ; d_in : 'i Denotation.t
   ; d_out : 'o Denotation.t
-  ; p_in : 'i Json.parse_t
   ; input : 'i Sample2.gen
   ; base_case : 'i Sample2.gen option
   ; poly_args : Smyth.Lang.typ list
@@ -167,8 +166,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               (Denotation.list Denotation.int)
               (Denotation.list Denotation.int)
         ; d_out = Denotation.list Denotation.int
-              ; 
-          p_in = Json.args2 (Json.list Json.int) (Json.list Json.int)
         ; input = Sample2.pair Sample2.nat_list Sample2.nat_list
         ; base_case = Some (Sample2.constant ([], []))
         ; poly_args = [snd Denotation.int]
@@ -186,7 +183,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 20
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -204,7 +200,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 20
         ; d_in = Denotation.nested_list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.nested_list Json.int
         ; input = Sample2.nested_nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -223,7 +218,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; d_in =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 (Json.list Json.int) Json.int
         ; input = Sample2.pair Sample2.nat_list Sample2.nat
         ; base_case = Some (Sample2.constant ([], 0))
         ; poly_args = [snd Denotation.int]
@@ -241,7 +235,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 15
         ; d_in = Denotation.list Denotation.bool
         ; d_out = Denotation.bool
-        ; p_in = Json.list Json.bool
         ; input = Sample2.bool_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = []
@@ -262,7 +255,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               Denotation.var
               (Denotation.list Denotation.int)
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 Json.var (Json.list Json.int)
         ; input =
             Sample2.pair
               (Sample2.from ("isEven", ["isNonzero"]))
@@ -293,7 +285,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               Denotation.int
               (Denotation.list Denotation.int)
         ; d_out = Denotation.int
-         ; p_in = Json.args3 Json.var Json.int (Json.list Json.int)
         ; input =
             Sample2.triple
               (Sample2.from ("sum", ["countOdd"]))
@@ -324,7 +315,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 10
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = []
@@ -347,7 +337,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 10
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = []
@@ -365,7 +354,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 20
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.opt Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -391,7 +379,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 5
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -412,7 +399,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               Denotation.var
               (Denotation.list Denotation.int)
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 Json.var (Json.list Json.int)
         ; input =
             Sample2.pair
               (Sample2.from ("inc", ["zero"]))
@@ -440,7 +426,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; d_in =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int
         ; d_out = Denotation.int
-        ; p_in = Json.args2 (Json.list Json.int) Json.int
         ; input = Sample2.pair Sample2.nat_list Sample2.nat
         ; base_case = Some (Sample2.constant ([], 0))
         ; poly_args = []
@@ -466,7 +451,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 20
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -489,7 +473,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 15
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -507,7 +490,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 15
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -525,7 +507,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 15
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -546,7 +527,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               (Denotation.list Denotation.int)
               (Denotation.list Denotation.int)
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 (Json.list Json.int) (Json.list Json.int)
         ; input = Sample2.pair Sample2.nat_list Sample2.nat_list
         ; base_case = Some (Sample2.constant ([], []))
         ; poly_args = [snd Denotation.int]
@@ -570,7 +550,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; d_in =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 (Json.list Json.int) Json.int
         ; input = Sample2.pair Sample2.nat_list Sample2.nat
         ; base_case = Some (Sample2.constant ([], 0))
         ; poly_args = [snd Denotation.int]
@@ -588,7 +567,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 20
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = []
@@ -607,7 +585,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; d_in =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 (Json.list Json.int) Json.int
         ; input = Sample2.pair Sample2.nat_list Sample2.nat
         ; base_case = Some (Sample2.constant ([], 0))
         ; poly_args = []
@@ -625,7 +602,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 10
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -648,7 +624,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 10
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = []
@@ -667,7 +642,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; d_in =
             Denotation.args2 Denotation.int (Denotation.list Denotation.int)
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.args2 Json.int (Json.list Json.int)
         ; input = Sample2.pair Sample2.nat Sample2.nat_list
         ; base_case = Some (Sample2.constant (0, []))
         ; poly_args = [snd Denotation.int]
@@ -685,7 +659,6 @@ let all : 'a reference_projection -> (string * 'a) list =
         ; k_max = 10
         ; d_in = Denotation.list Denotation.int
         ; d_out = Denotation.list Denotation.int
-        ; p_in = Json.list Json.int
         ; input = Sample2.nat_list
         ; base_case = Some (Sample2.constant [])
         ; poly_args = [snd Denotation.int]
@@ -799,23 +772,23 @@ let all : 'a reference_projection -> (string * 'a) list =
   (*           f *)
   (*       } *)
   (*   ) *)
-  (* ; ( "tree_collect_leaves" *)
-  (*   , proj *)
-  (*       { function_name = "treeCollectLeaves" *)
-  (*       ; k_max = 20 *)
-  (*       ; d_in = Denotation.tree Denotation.bool *)
-  (*       ; d_out = Denotation.list Denotation.bool *)
-  (*       ; input = Sample2.bool_tree *)
-  (*       ; base_case = Some (Sample2.constant Tree2.Leaf) *)
-  (*       ; poly_args = [snd Denotation.bool] *)
-  (*       ; func = *)
-  (*           let f : bool Tree2.t -> bool list = *)
-  (*             fun tree -> *)
-  (*               Tree2.in_order tree *)
-  (*           in *)
-  (*           f *)
-  (*       } *)
-  (*   ) *)
+  ; ( "tree_collect_leaves"
+    , proj
+        { function_name = "treeCollectLeaves"
+        ; k_max = 20
+        ; d_in = Denotation.tree Denotation.bool
+        ; d_out = Denotation.list Denotation.bool
+        ; input = Sample2.bool_tree
+        ; base_case = Some (Sample2.constant Tree2.Leaf)
+        ; poly_args = [snd Denotation.bool]
+        ; func =
+            let f : bool Tree2.t -> bool list =
+              fun tree ->
+                Tree2.in_order tree
+            in
+            f
+        }
+    )
   (* ; ( "tree_count_leaves" *)
   (*   , proj *)
   (*       { function_name = "treeCountLeaves" *)

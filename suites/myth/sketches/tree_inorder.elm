@@ -18,6 +18,6 @@ append l1 l2 =
     Cons p ->
       Cons (#2.1 p, append (#2.2 p) l2)
 
-treeInOrder : NatTree -> NatList
-treeInOrder xss =
+tree_inorder : NatTree -> NatList
+tree_inorder xss =
   ??

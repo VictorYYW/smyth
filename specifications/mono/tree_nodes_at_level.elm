@@ -1,4 +1,4 @@
-specifyFunction2 treeNodesAtLevel
+specifyFunction2 tree_nodes_at_level
   [ (0, Leaf, 0)
   , (1, Node (Leaf, T, Node (Leaf, F, Node (Node (Leaf, T, Leaf), T, Leaf))), 1)
   , (1, Node (Node (Leaf, F, Node (Node (Leaf, T, Node (Node (Leaf, T, Leaf), T, Leaf)), F, Leaf)), F, Leaf), 1)

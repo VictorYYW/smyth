@@ -1,4 +1,4 @@
-specifyFunction treeCountNodes
+specifyFunction tree_count_nodes
   [ (Leaf, 0)
   , (Node (Node (Leaf, 1, Leaf), 0, Node (Leaf, 2, Node (Leaf, 3, Leaf))), 4)
   , (Node (Leaf, 3, Node (Leaf, 2, Node (Leaf, 1, Node (Leaf, 0, Leaf)))), 4)

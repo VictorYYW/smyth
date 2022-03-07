@@ -23,8 +23,8 @@ inc : Nat -> Nat
 inc n =
   S n
 
-treeMap : (Nat -> Nat) -> NatTree -> NatTree
-treeMap f =
+tree_map : (Nat -> Nat) -> NatTree -> NatTree
+tree_map f =
   let
     fixTreeMap : NatTree -> NatTree
     fixTreeMap tree =

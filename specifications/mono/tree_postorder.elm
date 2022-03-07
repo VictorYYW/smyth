@@ -1,4 +1,4 @@
-specifyFunction treePostorder
+specifyFunction tree_postorder
   [ (Leaf, [])
   , (Node (Leaf, 2, Node (Node (Node (Leaf, 3, Leaf), 2, Leaf), 1, Leaf)), [3, 2, 1, 2])
   , (Node (Leaf, 0, Leaf), [0])

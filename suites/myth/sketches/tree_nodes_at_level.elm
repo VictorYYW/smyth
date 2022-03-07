@@ -16,6 +16,6 @@ sum n1 n2 =
     Z _ -> n2
     S m -> S (sum m n2)
 
-treeNodesAtLevel : BooleanTree -> Nat -> Nat
-treeNodesAtLevel tree n =
+tree_nodes_at_level : BooleanTree -> Nat -> Nat
+tree_nodes_at_level tree n =
   ??

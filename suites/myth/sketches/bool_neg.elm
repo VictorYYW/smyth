@@ -2,6 +2,6 @@ type Boolean
   = F ()
   | T ()
 
-neg : Boolean -> Boolean
-neg p =
+bool_neg : Boolean -> Boolean
+bool_neg p =
   ??

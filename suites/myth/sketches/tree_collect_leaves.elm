@@ -18,6 +18,6 @@ append l1 l2 =
     Cons p ->
       Cons (#2.1 p, append (#2.2 p) l2)
 
-treeCollectLeaves : BooleanTree -> BooleanList
-treeCollectLeaves tree =
+tree_collect_leaves : BooleanTree -> BooleanList
+tree_collect_leaves tree =
   ??
