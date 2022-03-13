@@ -1,4 +1,4 @@
-specifyFunction2 natMax
+specifyFunction2 nat_max
   [ (0, 0, 0)
   , (2, 2, 2)
   , (0, 3, 3)

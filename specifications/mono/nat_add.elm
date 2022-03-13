@@ -1,4 +1,4 @@
-specifyFunction2 natAdd
+specifyFunction2 nat_add
   [ (0, 0, 0)
   , (2, 2, 4)
   , (3, 0, 3)

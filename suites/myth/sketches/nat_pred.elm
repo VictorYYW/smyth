@@ -2,6 +2,6 @@ type Nat
   = Z ()
   | S Nat
 
-natPred : Nat -> Nat
-natPred n =
+nat_pred : Nat -> Nat
+nat_pred n =
   ??

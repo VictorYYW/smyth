@@ -6,6 +6,6 @@ type Boolean
   = F ()
   | T ()
 
-isEven : Nat -> Boolean
-isEven n =
+nat_iseven : Nat -> Boolean
+nat_iseven n =
   ??

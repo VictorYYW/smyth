@@ -23,6 +23,6 @@ compare n1 n2 =
         Z _  -> GT ()
         S m2 -> compare m1 m2
 
-natMax : Nat -> Nat -> Nat
-natMax m n =
+nat_max : Nat -> Nat -> Nat
+nat_max m n =
   ??
