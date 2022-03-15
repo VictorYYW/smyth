@@ -78,10 +78,11 @@ let uppercase  = ['A'-'Z']
 let character  = uppercase | lowercase
 let digit      = ['0'-'9']
 let string = ('"''"') | ('"' ("\\\"" | [^'"'])* '"')
+let int = '-'? ['0'-'9'] ['0'-'9']*
 
 rule token = parse
   | eof   { EOF }
-  | digit { INT (int_of_string (lexeme lexbuf)) }
+  | int { INT (int_of_string (lexeme lexbuf)) }
   (*| "#" digit+ { create_proj lexbuf } *)
   | "(*" {comments 0 lexbuf}
   | newline { new_line lexbuf; token lexbuf }
