@@ -1,4 +1,4 @@
-specifyFunction tree_collect_leaves
+specifyFunction tree_inorder_bool
   [ (Leaf, [])
   , (Node (Leaf, F, Node (Node (Leaf, T, Node (Node (Leaf, F, Node (Leaf, T, Leaf)), T, Leaf)), F, Leaf)), [F, T, F, T, T, F])
   , (Node (Leaf, T, Node (Node (Leaf, T, Leaf), F, Leaf)), [T, T, F])
